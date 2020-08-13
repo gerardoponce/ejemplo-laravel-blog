@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 // Para poder usar los roles en el modelo
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Article;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'last_name', 'user_name', 'email', 'password', 'image_path', 'description',
     ];
 
     /**
@@ -39,4 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Para usar el implicit binding y en la ruta el nickname en vez del id
+    public function getRouteKeyName()
+    {
+        return 'nick_name';
+    }
+
+    // Relaciones con otros modelos
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
 }
