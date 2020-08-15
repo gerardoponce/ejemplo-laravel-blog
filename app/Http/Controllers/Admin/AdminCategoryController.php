@@ -7,9 +7,20 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminCategoryStoreRequest;
 use App\Http\Requests\AdminCategoryUpdateRequest;
+use Illuminate\Support\Str;
 
 class AdminCategoryController extends Controller
 {
+    protected function firstLetterUCWord($array, $attribute) {
+
+        foreach ($array as $value) {
+            
+            $value->$attribute = ucwords($value->$attribute);
+        
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +28,11 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::select('name', 'slug', 'description')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $this->firstLetterUCWord($categories, 'name');
 
         return compact('categories');
     }
