@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['admin'])->prefix('admin')->group(function () {
+// Route::middleware(['admin'])->prefix('admin')->group(function () {
 
-    Route::get('home', 'HomeController@adminIndex');
+//     Route::get('admin', 'HomeController@adminIndex');
 
-});
+// });
 
 Route::middleware(['writer'])->group(function () {
 
@@ -32,6 +32,8 @@ Route::middleware(['writer'])->group(function () {
 });
 
 Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->group(function () {
+
+    Route::get('/', 'AdminController@index')->name('admin.index');
    
     Route::get('categories', 'AdminCategoryController@index')
         ->name('categories.index')
