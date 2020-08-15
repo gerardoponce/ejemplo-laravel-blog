@@ -165,6 +165,8 @@ return [
         Laraveles\Spanish\SpanishServiceProvider::class,
         // Para usar los roles y permisos
         Spatie\Permission\PermissionServiceProvider::class,
+        // Para usar la barra de depuracion
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,7 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        // Alias de la barra de depuracion
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

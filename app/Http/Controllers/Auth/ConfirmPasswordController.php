@@ -26,7 +26,20 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::WRITER_HOME;
+    protected function redirectTo () {
+
+        if (auth()->user()->getRoleNames()->first() == 'admin') {
+            
+            return $redirectTo = RouteServiceProvider::ADMIN_HOME;
+        
+        }
+
+        elseif (auth()->user()->getRoleNames()->first() == 'writer') {
+
+            return $redirectTo = RouteServiceProvider::WRITER_HOME;
+        
+        }
+    }
 
     /**
      * Create a new controller instance.
