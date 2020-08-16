@@ -12,19 +12,19 @@
                     <div class="carousel-item active">
                         <img src="{{ asset('img/image1.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
+                            First slide label
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/image2.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
+                            Second slide label
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/image3.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
+                            Third slide label
                         </div>
                     </div>
                 </div>
@@ -33,15 +33,15 @@
     </section>
     <section class="recent-articles">
         <div class="container">
-            <div class="subtitle">
-                <a href=""><h3>Reciente</h3></a>
+            <div class="subtitle mt-4">
+                <h5><a href="">Reciente</a></h5>
             </div>
             <div class="articles">
-            <div class="card-deck">
+            <div class="card-deck mb-3">
                 <div class="card">
                     <img src="{{ asset('img/image1.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="card">
                     <img src="{{ asset('img/image2.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="card">
                     <img src="{{ asset('img/image3.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="card">
                     <img src="{{ asset('img/image1.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="card">
                     <img src="{{ asset('img/image2.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -83,7 +83,7 @@
                 <div class="card">
                     <img src="{{ asset('img/image3.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href=""><h5 class="card-title">Card title</h5></a>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
@@ -93,37 +93,43 @@
         </div>
     </section>
     <section class="categories-principal">
-        <div class="container">
-            <div class="subtitle">
-                <a href=""><h3>Categorias</h3></a>
-            </div>
-            <div class="categories-container">
-                <div class="categorie">
-                    <div class="image">
+        <div class="subtitle mt-4">
+            <h5><a href="">Categorias</a></h5>
+        </div>
+        <div class="categories-container">
+            <div class="categorie">
+                <div class="image">
+                    <div class="image-content">
                         <img src="{{  asset('img/image1.jpg') }}" alt="">
                     </div>
                     <div class="categorie-title">
                         <h3>Titulo de la categoria</h3>
                     </div>
                 </div>
-                <div class="categorie">
-                    <div class="image">
+            </div>
+            <div class="categorie">
+                <div class="image">
+                    <div class="image-content">
                         <img src="{{  asset('img/image2.jpg') }}" alt="">
                     </div>
                     <div class="categorie-title">
                         <h3>Titulo de la categoria</h3>
                     </div>
                 </div>
-                <div class="categorie">
-                    <div class="image">
+            </div>
+            <div class="categorie">
+                <div class="image">
+                    <div class="image-content">
                         <img src="{{  asset('img/image3.jpg') }}" alt="">
                     </div>
                     <div class="categorie-title">
                         <h3>Titulo de la categoria</h3>
                     </div>
                 </div>
-                <div class="categorie">
-                    <div class="image">
+            </div>
+            <div class="categorie">
+                <div class="image">
+                    <div class="image-content">
                         <img src="{{  asset('img/image1.jpg') }}" alt="">
                     </div>
                     <div class="categorie-title">
