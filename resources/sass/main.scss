@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     background: #fff;
     font-size: 16px;
@@ -29,8 +32,6 @@ a{
             font-weight: bolder;
             &:hover {
                 color: #fff;
-                background: #2591D9;
-                
             }
         }
     }
@@ -94,55 +95,107 @@ a{
 
 // CATEGORIAS PRINCIPALES
 .categories-principal {
-    .container{
-        width: 100%;
-        margin: 0;
+    .subtitle {
+        a{
+            font-size: 18px;
+        }
     }
-    .categories-container {
+    .galery {
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        .categorie{
-            flex-grow: 1;
-            width: 330px;
-            margin: 0;
-            overflow: hidden;
-            .image {
+        overflow: hidden;
+        margin: 0;
+        height: 416px;
+        a{
+            .photo {
                 position: relative;
-                .image-content {
-                    width: 100%;
-                    height: 416px;
-                    img {
-                        height: 100%;
-                        display: block;
-                        margin: 0;
-                        margin: 0 auto;
-                    }
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+91,000000+100&0+0,0.65+91,0.65+100 */
-                        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 91%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
-                        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 91%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
-                        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 91%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
-    
-                        z-index: 2;
-                    }
+                height: 100%;
+                width: 25%;
+                float: left;
+                img {
+                    vertical-align: top;
+                    // width: 100%;
+                    height: 100%;
                 }
-                .categorie-title {
+                &:after {
+                    content: "";
                     position: absolute;
-                    bottom: 0%;
-                    color: #fff;
-                    z-index: 3;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+91,000000+100&0+0,0.65+91,0.65+100 */
+                    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 91%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 91%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 91%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+                    z-index: 2;
+                    transition: all .3s ease-in;
                 }
-                
+                .title {
+                    position: absolute;
+                    bottom: 10%;
+                    display: block;
+                    left: 0%;
+                    right: 0%;
+                    // width: 100%;
+                    z-index: 3;
+                    color: #fff;
+                    text-align: center;
+                    margin: 0 30px;
+                    transition: all .3s ease-out;
+                    h5 {
+                        background: #000;
+                        border-radius: 5px;
+                        padding: 10px 20px;
+                    }
+                }
+                &:hover {
+                    &:after {
+                        background: #000;
+                        opacity: .65;
+
+                    }
+                    > .title {
+                       bottom: 45%; 
+                    }
+                }
+            }
+        }
+    }
+}
+
+// SENTENCE
+.sentence {
+    .eslogan {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5% auto;
+        text-align: center;
+    }
+}
+
+// SECCION LOGIN
+.option-login {
+    background: #EBF7FF;
+    padding: 40px 0;
+    
+    .register-login {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        
+        .description {
+            font-size: 16px;
+            display: inline-block;
+            width: 50%;
+        }
+        .buttons-register {
+            a {
+                font-size: 20px;
+                margin: 3% 0;
+                float: right;
+                display: block;
+                width: 100%;
             }
         }
     }

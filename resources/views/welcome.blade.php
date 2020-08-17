@@ -93,65 +93,57 @@
         </div>
     </section>
     <section class="categories-principal">
-        <div class="subtitle mt-4">
-            <h5><a href="">Categorias</a></h5>
+        <div class="container">
+            <div class="subtitle mt-4">
+                <h5><a href="">Más Categorias</a></h5>
+            </div>
         </div>
-        <div class="categories-container">
-            <div class="categorie">
-                <div class="image">
-                    <div class="image-content">
-                        <img src="{{  asset('img/image1.jpg') }}" alt="">
-                    </div>
-                    <div class="categorie-title">
-                        <h3>Titulo de la categoria</h3>
-                    </div>
-                </div>
+        <div class="galery">
+            <a href="">
+            <div class="photo">
+                <img src="{{ asset('img/image1.jpg') }}" alt="">
+                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
-            <div class="categorie">
-                <div class="image">
-                    <div class="image-content">
-                        <img src="{{  asset('img/image2.jpg') }}" alt="">
-                    </div>
-                    <div class="categorie-title">
-                        <h3>Titulo de la categoria</h3>
-                    </div>
-                </div>
+            </a>
+            <a href="">
+            <div class="photo">
+                <img src="{{ asset('img/image2.jpg') }}" alt="">
+                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
-            <div class="categorie">
-                <div class="image">
-                    <div class="image-content">
-                        <img src="{{  asset('img/image3.jpg') }}" alt="">
-                    </div>
-                    <div class="categorie-title">
-                        <h3>Titulo de la categoria</h3>
-                    </div>
-                </div>
+            </a>
+            <a href="">
+            <div class="photo">
+                <img src="{{ asset('img/image3.jpg') }}" alt="">
+                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
-            <div class="categorie">
-                <div class="image">
-                    <div class="image-content">
-                        <img src="{{  asset('img/image1.jpg') }}" alt="">
-                    </div>
-                    <div class="categorie-title">
-                        <h3>Titulo de la categoria</h3>
-                    </div>
-                </div>
+            </a>
+            <a href="">
+            <div class="photo">
+                <img src="{{ asset('img/image1.jpg') }}" alt="">
+                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
+            </a>
         </div>
     </section>
     <section class="sentence">
         <div class="container">
-            <h3>Hello world !!!</h3>
+            <div class="eslogan">
+                <h2>Hello world !!!</h2>
+            </div>
         </div>
     </section>
     <section class="option-login">
         <div class="container">
-            <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque optio id aliquam expedita iusto! Atque perspiciatis nemo facere quasi consequuntur.
-            </div>
-            <div class="buttons">
-                <a class="btn btn-primary" href="">Registrate</a>
-                <a class="btn btn-primary" href="">Iniciar Sesión</a>
+            <div class="register-login">
+                <div class="description">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque optio id aliquam expedita iusto! Atque perspiciatis nemo facere quasi consequuntur.
+                    </p>
+                </div>
+                <div class="buttons-register">
+                    <a class="btn btn-primary register" href="">Registrate</a>
+                    <a class="btn btn-outline-primary" href="">Iniciar Sesión</a>
+                </div>
             </div>
         </div>
     </section>
