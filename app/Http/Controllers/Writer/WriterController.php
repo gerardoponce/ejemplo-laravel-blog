@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Writer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 // Aqui se pondran todas las funciones pertenencientes al writer
-class AdminController extends Controller
+// como actualizacion de perfil, ver perfil, etc
+class WriterController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -16,6 +17,6 @@ class AdminController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.home');
+        return view('home');
     }
 }

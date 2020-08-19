@@ -5,7 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
-class AdminCategoryStoreRequest extends FormRequest
+// Acomoda y verifica el array entrante antes de la creacion de la Categoria
+class CategoryStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

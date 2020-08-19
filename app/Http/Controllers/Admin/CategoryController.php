@@ -3,23 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\AdminCategoryStoreRequest;
-use App\Http\Requests\AdminCategoryUpdateRequest;
 use Illuminate\Support\Str;
 
-class AdminCategoryController extends Controller
+// El CRUD de solo administrador para categorias
+class CategoryController extends Controller
 {
-    protected function firstLetterUCWord($array, $attribute) {
 
-        foreach ($array as $value) {
+    // Para pruebas 
+    // protected function firstLetterUCWord($array, $attribute) {
+
+    //     foreach ($array as $value) {
             
-            $value->$attribute = ucwords($value->$attribute);
+    //         $value->$attribute = ucwords($value->$attribute);
         
-        }
-    }
-
+    //     }
+    // }
 
     /**
      * Display a listing of the resource.
@@ -32,7 +34,7 @@ class AdminCategoryController extends Controller
             ->orderBy('name', 'asc')
             ->get();
 
-        $this->firstLetterUCWord($categories, 'name');
+        // $this->firstLetterUCWord($categories, 'name');
 
         return compact('categories');
     }
@@ -53,7 +55,7 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminCategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request)
     {
         $category = new Category
         ([
@@ -98,7 +100,7 @@ class AdminCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
         //
     }

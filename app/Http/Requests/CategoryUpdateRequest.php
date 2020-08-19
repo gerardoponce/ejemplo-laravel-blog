@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
-// no se puede cambiar el slug una vez creado el articulo
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminCategoryUpdateRequest extends FormRequest
+// Acomoda y verifica el array entrante antes de la actualizacion de la Categoria
+// no se puede cambiar el slug una vez creado el articulo
+class CategoryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
