@@ -1,2 +1,3 @@
-{{-- personalizar errores 403, 404 y 500 --}}
-{{ 'soy un error personalizado' }}
+@extends('errors::illustrated-layout')
+@section('code', '403')
+@section('title', __('You do not have permissions'))

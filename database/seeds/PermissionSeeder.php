@@ -17,6 +17,9 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         // Lista de permisos
+        // Para pagina de inicio
+        Permission::create(['name' => 'admin.home']);
+        Permission::create(['name' => 'writer.home']);
         // Para categories
         Permission::create(['name' => 'categories.index']);
         Permission::create(['name' => 'categories.edit']);
@@ -37,11 +40,16 @@ class PermissionSeeder extends Seeder
         // Asignando permisos a roles
         // Para admin
         $admin->givePermissionTo([
+            'admin.home',
             'categories.index',
             'categories.edit',
             'categories.show',
             'categories.create',
             'categories.destroy'
+        ]);
+
+        $writer->givePermissionTo([
+            'writer.home',
         ]);
 
         //Asignando rol a usuario
