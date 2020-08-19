@@ -66,9 +66,6 @@ class Kernel extends HttpKernel
         // Roles y permisos para usarlos en las rutas
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-        // Para ver que tipo de rol y redireccionar
-        'admin' => \App\Http\Middleware\Admin::class,
-        'writer' => \App\Http\Middleware\Writer::class,
         
     ];
 }

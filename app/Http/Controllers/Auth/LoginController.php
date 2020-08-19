@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Traits\RedirectTo;
 
 class LoginController extends Controller
 {
@@ -27,20 +28,13 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected function redirectTo () {
-
-        if (auth()->user()->getRoleNames()->first() == 'admin') {
-            
-            return $redirectTo = RouteServiceProvider::ADMIN_HOME;
-        
-        }
-
-        elseif (auth()->user()->getRoleNames()->first() == 'writer') {
-
-            return $redirectTo = RouteServiceProvider::WRITER_HOME;
-        
-        }
-    }
+    // Utiliza redirectTo() del trait RedirectTo
+    // para redirigar de acuerdo a si es admin o writer
+    use RedirectTo;
+    protected function redirect()
+    {
+        $this->redirectTo();
+    }   
 
     // protected $redirectTo = RouteServiceProvider::HOME;
 
