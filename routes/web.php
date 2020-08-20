@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/pruebas', function () {
+    return view('layouts.app');
+});
+
 // Rutas para los usuarios autenticados
 Route::middleware( ['auth'] )->group( function() {
 
