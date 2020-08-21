@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Pagina de inicio, solo para usuarios no autenticados
 Route::get('/', function () {
     return view('welcome');
-})->middleware('guest');
+});
 
 Auth::routes();
 
