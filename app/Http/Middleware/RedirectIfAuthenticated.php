@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check() && $request->user()->getRoleNames()->first() == 'writer')
         {
-            return redirect(RouteServiceProvider::WRITER_HOME);
+            return $next($request);
         }
 
         elseif (Auth::guard($guard)->check() && $request->user()->getRoleNames()->first() == 'admin') {
