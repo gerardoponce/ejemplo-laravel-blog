@@ -1,3 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: #fff;
+    font-size: 16px;
+}
+a{
+    font-size: 16px;
+    color: #4AA4E0;
+    &:hover {
+        color: #4AA4E0;
+    }
+}
+.container-md {
+    max-width: 1216px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
 // NAVBAR
 .navbar {
     .nav-item{
@@ -179,7 +200,6 @@
         }
     }
 }
-
 // para ocultar de acuerdo a sm, md, lg, xl según la convencion de Bootstrap
 @media (max-width: 576px)  {
     .ocultar {
