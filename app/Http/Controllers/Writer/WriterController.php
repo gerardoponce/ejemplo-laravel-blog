@@ -19,4 +19,9 @@ class WriterController extends Controller
     {
         return view('home');
     }
+
+    public function edit() 
+    {
+        return view('writer.config');
+    }
 }

@@ -32,6 +32,10 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'articles.show']);
         Permission::create(['name' => 'articles.create']);
         Permission::create(['name' => 'articles.destroy']);
+
+        // Para las acciones de writer
+        Permission::create(['name' => 'writer.edit']);
+        Permission::create(['name' => 'writer.update']);
         
         // Lista de roles
         $admin  = Role::create(['name' => 'admin']);
@@ -50,6 +54,8 @@ class PermissionSeeder extends Seeder
 
         $writer->givePermissionTo([
             'writer.home',
+            'writer.edit',
+            'writer.update',
         ]);
 
         //Asignando rol a usuario
