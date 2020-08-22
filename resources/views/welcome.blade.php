@@ -133,24 +133,4 @@
             </div>
         </div>
     </section>
-    <section class="option-login">
-        <div class="container">
-            <div class="register-login">
-                <div class="description">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque optio id aliquam expedita iusto! Atque perspiciatis nemo facere quasi consequuntur.
-                    </p>
-                </div>
-                <div class="buttons-register">
-                    <a class="btn btn-primary register" href="">Registrate</a>
-                    <a class="btn btn-outline-primary" href="">Iniciar Sesión</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="social-networks">
-            
-        </div>
-    </footer>
 @endsection
