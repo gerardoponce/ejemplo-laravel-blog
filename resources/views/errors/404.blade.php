@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<h1>Permisos insuficientes</h1>
+<h1>Ruta no encontrada</h1>
 @auth
     @if (Auth::user()->getRoleNames()->first() == 'admin')
     <a class="btn btn-primary" href=" {{ route('admin.index')}}">HOME</a>
