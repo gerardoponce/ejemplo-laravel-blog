@@ -50,6 +50,7 @@ class PermissionSeeder extends Seeder
 
         $writer->givePermissionTo([
             'writer.home',
+            'articles.create'
         ]);
 
         //Asignando rol a usuario

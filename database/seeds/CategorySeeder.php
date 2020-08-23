@@ -14,21 +14,27 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name'          => 'programación',
-            'slug'          => Str::slug('programacion', '-'),
-            'description'   => 'todo relacionado al tema de la programación',
+            'name'          => $slug = 'programación',
+            'slug'          => Str::slug($slug, '-'),
+            'description'   => 'todo lo relacionado al tema de la programación',
         ]);
 
         Category::create([
-            'name'          => 'ux',
-            'slug'          => Str::slug('ux', '-'),
-            'description'   => 'todo relacionado al tema de la experiencia de usuario',
+            'name'          => $slug = 'marketing',
+            'slug'          => Str::slug($slug, '-'),
+            'description'   => 'todo lo relacionado al tema del marketing',
         ]);
 
         Category::create([
-            'name'          => 'economía',
-            'slug'          => Str::slug('economia', '-'),
-            'description'   => 'todo relacionado al tema de la economía',
+            'name'          => $slug = 'música',
+            'slug'          => Str::slug($slug, '-'),
+            'description'   => 'todo lo relacionado al tema de la música',
+        ]);
+
+        Category::create([
+            'name'          => $slug = 'fotografía',
+            'slug'          => Str::slug($slug, '-'),
+            'description'   => 'todo lo relacionado al tema de la fotografía',
         ]);
     }
 }
