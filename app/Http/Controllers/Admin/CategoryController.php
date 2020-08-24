@@ -31,12 +31,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::select('name', 'slug', 'description')
-            ->orderBy('name', 'asc')
+            ->orderBy('name', 'ASC')
             ->get();
 
         // $this->firstLetterUCWord($categories, 'name');
 
-        return compact('categories');
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -44,10 +44,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('category.create');
-    }
+    // public function create()
+    // {
+    //     return view('category.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -57,8 +57,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = new Category
-        ([
+        $category = new Category(
+        [
             'name'          => $request->get('name'),
             'slug'          => $request->get('slug'),
             'description'   => $request->get('description'),
@@ -67,7 +67,7 @@ class CategoryController extends Controller
         $category->save();
         
         return redirect()
-                ->route('categories.index')
+                ->route('admin.categories.index')
                 ->with('success', 'Categoría creada.');
     }
 
@@ -79,7 +79,16 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return compact('category');
+
+        // $articles = $category
+        //                 ->articles()
+        //                 ->select('title', 'slug', 'image_path', 'excerpt')
+        //                 ->get();
+
+        // $articles->paginate(6);
+
+        // return compact('category');
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -90,7 +99,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -102,7 +112,11 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        return redirect()
+                    ->route('admin.categories.index')
+                    ->with('success','Categoría actualizada');
     }
 
     /**
@@ -113,6 +127,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+  
+        return redirect()
+                ->route('admin.categories.index')
+                ->with('success','Categoría eliminada');
     }
 }
