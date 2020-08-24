@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     // Para usar el implicit binding y en la ruta el slug en vez del id
     public function getRouteKeyName()
@@ -14,11 +14,12 @@ class Category extends Model
     }
 
     protected $fillable = [
-        'name', 'slug', 'description',
+        'name', 'slug',
     ];
 
-    // Relacion uno a muchos con Article
-    public function articles() {
-        return $this->hasMany(Article::class);
+    // Relacion muchos a muchos con Article
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class);
     }
 }
