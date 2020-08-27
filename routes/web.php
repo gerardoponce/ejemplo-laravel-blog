@@ -67,9 +67,14 @@ Route::middleware( ['auth'] )->group( function() {
     // Ruta para los escritores
     Route::namespace( 'Writer' )->group( function() {
         Route::get('/home', 'WriterController')->middleware('permission:writer.home');
+
         Route::get('/config', 'WriterController@edit')
             ->middleware('permission:writer.edit')
             ->name('writer.profile.edit');
+
+        Route::post('/config/update', 'WriterController@update')
+            ->middleware('permission:writer.update')
+            ->name('writer.profile.update');
     });
 
 });
