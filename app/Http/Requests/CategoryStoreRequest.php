@@ -39,9 +39,9 @@ class CategoryStoreRequest extends FormRequest
     {
         // consultar sobre el minimo y maximo de caracteres
         return [
-            'name'          => ['required', 'unique:categories', 'min:5', ],
-            'slug'          => ['required', 'unique:categories', ],
-            'description'   => ['required', ],
+            'name'          => ['required', 'unique:categories', 'min:5', 'max:50' ],
+            'slug'          => ['required', 'unique:categories' ],
+            'description'   => ['required', 'min:5', 'max:200'],
         ];
     }
 }

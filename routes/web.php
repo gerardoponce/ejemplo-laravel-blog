@@ -13,10 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Pagina de inicio, solo para usuarios no autenticados
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('guest');
+// Rutas sin middleware    
+Route::get('/@{nick_name}', 'HomeController@getProfile')->name('profile');
+
+
+
+// Rutas para solo invitados y writer.index
+Route::middleware( ['guest'] )->group( function() {
+
+    // Ruta de index de invitados y writers
+    Route::get('/', 'HomeController@index')->name('index');
+
+});
 
 Auth::routes();
 
@@ -27,44 +35,44 @@ Route::get('/pruebas', function () {
 // Rutas para los usuarios autenticados
 Route::middleware( ['auth'] )->group( function() {
 
-    // Ruta para los administradores
+    // Rutas para los admins
     Route::namespace( 'Admin' )->prefix( '/admin' )->group( function() {
 
-        Route::get('/', 'AdminController')
+        Route::get('/', 'AdminController@getIndex')
             ->middleware('permission:admin.home')
             ->name('admin.index');
    
         Route::get('/categories', 'CategoryController@index')
-            ->middleware('permission:categories.index')
+            ->middleware('permission:admin.categories.index')
             ->name('admin.categories.index');
         
         Route::get('/categories/create', 'CategoryController@create')
-            ->middleware('permission:categories.create')
+            ->middleware('permission:admin.categories.create')
             ->name('admin.categories.create');
         
         Route::post('/categories/store', 'CategoryController@store')
-            ->middleware('permission:categories.create')
+            ->middleware('permission:admin.categories.create')
             ->name('admin.categories.store');
         
         Route::get('/categories/{category}', 'CategoryController@show')
-            ->middleware('permission:categories.show')
+            ->middleware('permission:admin.categories.show')
             ->name('admin.categories.show');
         
         Route::get('/categories/{category}/edit', 'CategoryController@edit')
-            ->middleware('permission:categories.edit')
+            ->middleware('permission:admin.categories.edit')
             ->name('admin.categories.edit');
         
-        Route::patch('/categories/{category}', 'CategoryController@update')
-            ->middleware('permission:categories.edit')
+        Route::put('/categories/{category}', 'CategoryController@update')
+            ->middleware('permission:admin.categories.edit')
             ->name('admin.categories.update');
         
         Route::delete('/categories/{category}', 'CategoryController@destroy')
-            ->middleware('permission:categories.destroy')
+            ->middleware('permission:admin.categories.destroy')
             ->name('admin.categories.destroy');
 
     });
 
-    // Ruta para los escritores
+    // Rutas para los writers
     Route::namespace( 'Writer' )->group( function() {
         Route::get('/home', 'WriterController')->middleware('permission:writer.home');
 
@@ -75,6 +83,19 @@ Route::middleware( ['auth'] )->group( function() {
         Route::post('/config/update', 'WriterController@update')
             ->middleware('permission:writer.update')
             ->name('writer.profile.update');
+
+        Route::get('/me/articles', 'ArticleController@index')
+            ->middleware('permission:writer.articles.index')
+            ->name('writer.articles.index');
+
+        Route::get('/me/articles/create', 'ArticleController@create')
+            ->middleware('permission:writer.articles.create')
+            ->name('writer.articles.create');
+
+        Route::get('/me/articles/{article}', 'ArticleController@show')
+            ->middleware('permission:writer.articles.show')
+            ->name('writer.articles.show');
+
     });
 
 });

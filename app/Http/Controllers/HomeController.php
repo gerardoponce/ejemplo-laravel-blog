@@ -1,24 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Category;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function index()
     {
         $categories = Category::select('name', 'slug')
             ->get();
 
-        return view('admin.home', compact('categories'));
+        $articles = Article::select('title', 'slug', 'image_path', 'excerpt', 'created_at')
+            ->latest()
+            ->limit(8)
+            ->get();
+        
+        return view('welcome', compact('categories', 'articles'));
+        // return compact('categories', 'articles');
+    }
+
+    public function getProfile()
+    {
+        return 'profile';
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Article;
+use App\Models\Comment;
 
-class ArticleSeeder extends Seeder
+class CommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        factory(Article::class, 50)->create();
+        factory(Comment::class, 200)->create();
     }
 }

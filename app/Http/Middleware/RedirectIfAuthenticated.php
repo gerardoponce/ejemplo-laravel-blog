@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
         }
 
         elseif (Auth::guard($guard)->check() && $request->user()->getRoleNames()->first() == 'admin') {
-            return redirect(RouteServiceProvider::ADMIN_HOME);
+            return abort(403);
         }
         else {
             return $next($request);

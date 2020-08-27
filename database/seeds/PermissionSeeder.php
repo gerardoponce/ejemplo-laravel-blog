@@ -21,21 +21,20 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'admin.home']);
         Permission::create(['name' => 'writer.home']);
         // Para categories
-        Permission::create(['name' => 'categories.index']);
-        Permission::create(['name' => 'categories.edit']);
-        Permission::create(['name' => 'categories.show']);
-        Permission::create(['name' => 'categories.create']);
-        Permission::create(['name' => 'categories.destroy']);
-        // Para articles
-        Permission::create(['name' => 'articles.index']);
-        Permission::create(['name' => 'articles.edit']);
-        Permission::create(['name' => 'articles.show']);
-        Permission::create(['name' => 'articles.create']);
-        Permission::create(['name' => 'articles.destroy']);
+        Permission::create(['name' => 'admin.categories.index']);
+        Permission::create(['name' => 'admin.categories.edit']);
+        Permission::create(['name' => 'admin.categories.show']);
+        Permission::create(['name' => 'admin.categories.create']);
+        Permission::create(['name' => 'admin.categories.destroy']);
 
         // Para las acciones de writer
         Permission::create(['name' => 'writer.edit']);
         Permission::create(['name' => 'writer.update']);
+        Permission::create(['name' => 'writer.articles.index']);
+        Permission::create(['name' => 'writer.articles.edit']);
+        Permission::create(['name' => 'writer.articles.show']);
+        Permission::create(['name' => 'writer.articles.create']);
+        Permission::create(['name' => 'writer.articles.destroy']);
         
         // Lista de roles
         $admin  = Role::create(['name' => 'admin']);
@@ -45,23 +44,31 @@ class PermissionSeeder extends Seeder
         // Para admin
         $admin->givePermissionTo([
             'admin.home',
-            'categories.index',
-            'categories.edit',
-            'categories.show',
-            'categories.create',
-            'categories.destroy'
+            'admin.categories.index',
+            'admin.categories.edit',
+            'admin.categories.show',
+            'admin.categories.create',
+            'admin.categories.destroy'
         ]);
 
         $writer->givePermissionTo([
             'writer.home',
             'writer.edit',
             'writer.update',
+            'writer.articles.index',
+            'writer.articles.edit',
+            'writer.articles.show',
+            'writer.articles.create',
+            'writer.articles.destroy'
         ]);
 
-        //Asignando rol a usuario
-        $user_1 = User::find(1);
-        $user_1->assignRole('admin');
-        $user_2 = User::find(2);
-        $user_2->assignRole('writer');
+        //Asignando rol a usuarios
+        $admin = User::find(1);
+        $admin->assignRole('admin');
+
+        $writers = User::whereNotIn('id', [1])->get();
+        foreach ($writers as $writer) {
+            $writer->assignRole('writer');
+        }
     }
 }

@@ -10,8 +10,10 @@ $factory->define(Article::class, function (Faker $faker) {
     return [
         'title'         => $slug = $faker->sentence($nbWords = 6, $variableNbWords = true),
         'slug'          => Str::slug($slug, '-'),
-        'text'       => $faker->text(300),
-        'user_id'       => 1,
-        'category_id'   => 2,
+        'image_path'    => $faker->imageUrl($width = 960, $height = 600),
+        'excerpt'       => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'text'          => $faker->text($maxNbChars = 500),
+        'user_id'       => $faker->numberBetween($min = 2, $max = 5),
+        'category_id'   => $faker->numberBetween($min = 1, $max = 4)
     ];
 });

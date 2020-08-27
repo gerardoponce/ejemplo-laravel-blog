@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Writer;
 
-use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\Category;
+use Auth;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function index()
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
+        $articles = Article::select('title', 'slug', 'image_path','sub_title')
+            ->where('user_id', '=', Auth::user()->id)
+            ->paginate(6);
 
-        return view('admin.home', compact('categories'));
+        return view('article.index', compact('articles'));
     }
 
     /**
@@ -28,7 +31,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -45,33 +48,34 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        $this->authorize('pass', $article);
+        return compact('article');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        $this->authorize('pass', $article);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -79,10 +83,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
         //
     }
