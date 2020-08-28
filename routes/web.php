@@ -18,7 +18,7 @@ Route::get('/@{user}', 'HomeController@getProfile')->name('profile');
 
 Route::get('/@{user}/{article}', 'HomeController@getArticle')->name('article');
 
-// Rutas para solo invitados y writer.index
+// Rutas para solo invitados
 Route::middleware( ['guest'] )->group( function() {
 
     // Ruta de index de invitados y writers
@@ -74,8 +74,17 @@ Route::middleware( ['auth'] )->group( function() {
 
     // Rutas para los writers
     Route::namespace( 'Writer' )->group( function() {
+        Route::get('/news', 'WriterController@index')
+            ->middleware('permission:writer.home')
+            ->name('writer.index');
 
-        Route::get('/news', 'WriterController@index');
+        Route::get('/config', 'WriterController@edit')
+            ->middleware('permission:writer.edit')
+            ->name('writer.profile.edit');
+
+        Route::post('/config/update', 'WriterController@update')
+            ->middleware('permission:writer.update')
+            ->name('writer.profile.update');
 
         Route::get('/me/articles', 'ArticleController@index')
             ->middleware('permission:writer.articles.index')

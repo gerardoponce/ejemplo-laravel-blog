@@ -6,7 +6,7 @@
 	{!! Form::text('excerpt', null, ['class' => 'form-control border-0']) !!}
 	{!! Form::file('image_path', []) !!}
 	{!! Form::textarea('text', null, ['id' => 'editor']) !!}
-	{!! Form::submit('Guardar artículo', []) !!}
+	{!! Form::submit('Guardar artículo', ['class' => 'btn btn-sm']) !!}
 {!! Form::close() !!}
 @endsection
 

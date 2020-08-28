@@ -78,7 +78,7 @@
                                 <a class="dropdown-item" href="{{ route('writer.articles.create')}}">
                                     Crear artículo
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('writer.profile.edit') }}">
                                     Configuración
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"

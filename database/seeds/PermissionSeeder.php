@@ -26,7 +26,10 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'admin.categories.show']);
         Permission::create(['name' => 'admin.categories.create']);
         Permission::create(['name' => 'admin.categories.destroy']);
-        // Para articles
+
+        // Para las acciones de writer
+        Permission::create(['name' => 'writer.edit']);
+        Permission::create(['name' => 'writer.update']);
         Permission::create(['name' => 'writer.articles.index']);
         Permission::create(['name' => 'writer.articles.edit']);
         Permission::create(['name' => 'writer.articles.show']);
@@ -50,6 +53,8 @@ class PermissionSeeder extends Seeder
 
         $writer->givePermissionTo([
             'writer.home',
+            'writer.edit',
+            'writer.update',
             'writer.articles.index',
             'writer.articles.edit',
             'writer.articles.show',
