@@ -37,7 +37,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" placeholder="Nombre de usuario" name="user_name" value="{{ auth()->user()->user_name }}" required autocomplete="name" autofocus>
+                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" placeholder="Nombre de usuario" name="username" value="{{ auth()->user()->username }}" required autocomplete="name" autofocus>
 
                     @error('user_name')
                         <span class="invalid-feedback" role="alert">

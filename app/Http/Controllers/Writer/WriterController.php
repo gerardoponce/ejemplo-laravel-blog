@@ -4,15 +4,12 @@ namespace App\Http\Controllers\Writer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 // Aqui se pondran todas las funciones pertenencientes al writer
 // como actualizacion de perfil, ver perfil, etc
-=======
 
->>>>>>> 0e0a07dc1e7b113a69eb97b6fe3c3d57c8a9bae1
 class WriterController extends Controller
 {
     /**
@@ -58,29 +55,6 @@ class WriterController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -104,7 +78,7 @@ class WriterController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'user_name' => 'required|string|max:255|unique:users,user_name,'.$user->id,
+            'username' => 'required|string|max:255|unique:users,username,'.$user->id,
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
             'image_path' => 'image',
             'description' => 'nullable|string'
@@ -113,13 +87,14 @@ class WriterController extends Controller
         // Almacenar y actualizar los datos
         $user->name = $request->input('name');
         $user->last_name = $request->input('last_name');
-        $user->user_name = $request->input('user_name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->description = $request->input('description');
 
         // Subir la imagen
         $image_path = $request->file('image_path');
         if($image_path) {
+            // Nombre de la imagen
             $image_name = Str::random(10) . $image_path->getClientOriginalName();
             $ruta = storage_path() . '\app\public/' . $image_name;
             Image::make($image_path)
