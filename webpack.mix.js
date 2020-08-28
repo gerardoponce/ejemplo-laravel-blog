@@ -14,11 +14,7 @@ const mix = require('laravel-mix');
 mix
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .scripts([
-        'resources/js/ckeditor/ckeditor.js'
-    ], 'public/js/ckeditor/ckeditor.js')
-    .scripts([
-        'resources/js/ckeditor/es.js'
-    ], 'public/js/ckeditor/es.js')
+    .copy('node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js', 'public/js/ckeditor/ckeditor.js')
+    .copy('node_modules/@ckeditor/ckeditor5-build-classic/build/translations/es.js', 'public/js/ckeditor/es.js')
     .copy( 'resources/img/*', 'public/img' );
     

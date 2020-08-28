@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
@@ -20,82 +21,30 @@ class HomeController extends Controller
             ->get();
 
         $articles = Article::select('title', 'slug', 'image_path', 'excerpt', 'created_at')
+            ->where('published', '=', 1)
             ->latest()
             ->limit(8)
             ->get();
         
-        return view('welcome', compact('categories', 'articles'));
+        return view('home', compact('categories', 'articles'));
         // return compact('categories', 'articles');
     }
 
-    public function getProfile()
+    public function getProfile(User $user)
     {
-        return 'profile';
+        $articles = $user
+                        ->articles()
+                        ->select('title', 'slug', 'image_path', 'excerpt')
+                        // ->where('published', '=', 1)
+                        ->get();
+                        
+        $articles = CollectionHelper::paginate($articles, 6);
+
+        return compact('user', 'articles');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getArticle(User $user, Article $article)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return compact('user', 'article');
     }
 }

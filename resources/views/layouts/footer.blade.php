@@ -1,4 +1,4 @@
-<footer class="container-fluid px-0 bg-dark navbar navbar-fixed-bottom">
+<footer class="bg-dark">
     <div class="container-md">
         <div class="row text-white p-3">
             <section class="col-6 col-md-4 col-lg-3">

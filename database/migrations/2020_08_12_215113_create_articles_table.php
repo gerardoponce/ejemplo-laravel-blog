@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('image_path');
             $table->string('excerpt', 100);
             $table->text('text');
+            $table->boolean('published')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->timestamps();

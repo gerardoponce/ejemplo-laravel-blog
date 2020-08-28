@@ -200,6 +200,9 @@ a{
         }
     }
 }
+.min-100vh {
+    min-height: 100vh;
+}
 // para ocultar de acuerdo a sm, md, lg, xl según la convencion de Bootstrap
 @media (max-width: 576px)  {
     .ocultar {

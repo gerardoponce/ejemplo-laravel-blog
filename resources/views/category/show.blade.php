@@ -12,7 +12,7 @@
 </div>
 
 <div>
-    <h2>{{ $category['name'] }}</h2>
+    <h2>{{ $category->name }}</h2>
 </div>
 
 <table class="table">
@@ -23,8 +23,8 @@
             <th>Opciones</th>
         </tr>
     </thead>
-    {{-- <tbody>
-        @foreach ($category['articles'] as $article)
+    <tbody>
+        @foreach ($articles as $article)
         <tr>
             <th scope="row">{{ $article->title }}</th>
             <td>{{ $article->excerpt }}</td>
@@ -34,8 +34,9 @@
         </tr>
         @endforeach
 
-    </tbody> --}}
+    </tbody>
 </table>
 
+{{ $articles->links() }}
 
 @endsection

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class CreateCategory extends Component
+class UpdateModelForm extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class CreateCategory extends Component
      */
     public function render()
     {
-        return view('components.create-category');
+        return view('components.update-model-form');
     }
 }

@@ -8,7 +8,7 @@
                 <img src="{{ $article->image_path}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $article->title }}</h5>
-                    <p class="card-text">{{ $article->sub_title}}</p>
+                    <p class="card-text">{{ $article->excerpt}}</p>
                     <p class="card-text"><small class="text-muted"> {{$article->created_at}}</small></p>
                 </div>
                 <div class="card-footer">

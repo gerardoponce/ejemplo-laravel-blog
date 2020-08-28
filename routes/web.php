@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Rutas sin middleware    
-Route::get('/@{nick_name}', 'HomeController@getProfile')->name('profile');
+Route::get('/@{user}', 'HomeController@getProfile')->name('profile');
 
-
+Route::get('/@{user}/{article}', 'HomeController@getArticle')->name('article');
 
 // Rutas para solo invitados y writer.index
 Route::middleware( ['guest'] )->group( function() {
@@ -75,6 +75,8 @@ Route::middleware( ['auth'] )->group( function() {
     // Rutas para los writers
     Route::namespace( 'Writer' )->group( function() {
 
+        Route::get('/news', 'WriterController@index');
+
         Route::get('/me/articles', 'ArticleController@index')
             ->middleware('permission:writer.articles.index')
             ->name('writer.articles.index');
@@ -83,10 +85,25 @@ Route::middleware( ['auth'] )->group( function() {
             ->middleware('permission:writer.articles.create')
             ->name('writer.articles.create');
 
+        Route::post('/me/articles/store', 'ArticleController@store')
+            ->middleware('permission:writer.articles.create')
+            ->name('writer.articles.store');
+
         Route::get('/me/articles/{article}', 'ArticleController@show')
             ->middleware('permission:writer.articles.show')
             ->name('writer.articles.show');
 
+        Route::get('/me/articles/{article}/edit', 'ArticleController@edit')
+            ->middleware('permission:writer.articles.edit')
+            ->name('writer.articles.edit');
+        
+        Route::put('/me/articles/{article}', 'ArticleController@update')
+            ->middleware('permission:writer.articles.edit')
+            ->name('writer.articles.update');
+        
+        Route::delete('/me/articles/{article}', 'ArticleController@destroy')
+            ->middleware('permission:writer.articles.destroy')
+            ->name('writer.articles.destroy');            
     });
 
 });

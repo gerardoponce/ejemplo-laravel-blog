@@ -1,4 +1,4 @@
-<header class="container-fluid px-0">
+<header class="">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-md">
             <section class="">

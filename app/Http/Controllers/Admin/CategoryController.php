@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\CollectionHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
@@ -80,15 +81,14 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
 
-        // $articles = $category
-        //                 ->articles()
-        //                 ->select('title', 'slug', 'image_path', 'excerpt')
-        //                 ->get();
+        $articles = $category
+                        ->articles()
+                        ->select('title', 'slug', 'image_path', 'excerpt')
+                        ->get();
 
-        // $articles->paginate(6);
-
-        // return compact('category');
-        return view('category.show', compact('category'));
+        $articles = CollectionHelper::paginate($articles, 6);
+        // return compact('category', 'articles');
+        return view('category.show', compact('category', 'articles'));
     }
 
     /**

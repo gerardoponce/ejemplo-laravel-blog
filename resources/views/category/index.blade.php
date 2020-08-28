@@ -7,15 +7,8 @@
 </div>
 @endif
 
-<div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-        Crear categoría
-    </button>
-
-    <x-create-category/>
-</div>
-
+{{-- Formulario modal --}}
+<x-create-model-form id="createForm" modalTitle="Crear categoría" textName="name" textareaName="description" textNamePH="Nombre" textareaNamePH="Descripción" modelName="categoría"/>
 <table class="table">
     <thead>
         <tr>
@@ -33,13 +26,9 @@
                 <a class="btn btn-sm btn-outline-info text-dark" href=" {{ route('admin.categories.show', ['category' => $category->slug]) }}">Ver más</a>
             </td>
             <td>
-                <form action="{{ route('admin.categories.destroy', ['category' => $category->slug]) }}" method="POST">
-                    
-                    @csrf
-                    @method('DELETE')
-
+                {!! Form::open(['route' => ['admin.categories.destroy', 'category' => $category->slug,], 'method' => 'DELETE']) !!}
                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                </form>
+                {!! Form::close() !!}
             </td>
         </tr>
         @endforeach

@@ -9,14 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Nombre del tab --}}
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>Plot - @yield('tab-title')</title>
+    <title>{{ config('app.name') }}-@yield('title')</title>
     
     {{-- Styles --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{-- CDN para los iconos de FontAwesome --}}
     <script src="https://kit.fontawesome.com/de17adf649.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -26,15 +26,15 @@
         @include('layouts.header')
 
         {{-- Contenido principal de la aplicacion --}}
-        <main class="container-md py-4 main">
+        <div class="min-100vh">
             @yield('content')
-        </main>
+        </div>
         
         @guest
         {{-- Componente solo visible para invitados --}}
         <x-auth-banner/>
         @endguest
-
+        
         {{-- Llama al footer --}}
         @include('layouts.footer')
 
