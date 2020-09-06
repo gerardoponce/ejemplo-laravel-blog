@@ -16,7 +16,7 @@ class Article extends Model
     }
 
     protected $fillable = [
-        'title', 'slug', 'image_path', 'excerpt', 'text', 'published', 'user_id', 'category_id'
+        'title', 'slug', 'image_path', 'summary', 'text', 'published', 'user_id', 'category_id'
     ];
 
     // Relacion muchos a uno con User

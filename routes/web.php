@@ -82,9 +82,9 @@ Route::middleware( ['auth'] )->group( function() {
             ->middleware('permission:writer.edit')
             ->name('writer.profile.edit');
 
-        Route::post('/config/update', 'WriterController@update')
+        Route::put('/config', 'WriterController@updateProfile')
             ->middleware('permission:writer.update')
-            ->name('writer.profile.update');
+            ->name('writer.profile.updateProfile');
 
         Route::get('/me/articles', 'ArticleController@index')
             ->middleware('permission:writer.articles.index')

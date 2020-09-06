@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'email'             => 'admin01@app.com',
             'email_verified_at' => now(),
             'password'          => bcrypt('123456789'),
-
+            'image_path'        => 'img/default_profile.png',            
         ]);
 
         User::create([
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'email'             => 'user01@app.com',
             'email_verified_at' => now(),
             'password'          => bcrypt('123456789'),
-
+            'image_path'        => 'img/default_profile.png',
         ]);
 
         factory(User::class, 20)->create();

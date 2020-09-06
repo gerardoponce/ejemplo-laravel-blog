@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class ArticleUpdateRequest extends FormRequest
 {
@@ -13,7 +14,19 @@ class ArticleUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'slug' => Str::slug($this->title),
+        ]);
     }
 
     /**
@@ -24,7 +37,10 @@ class ArticleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'article.title' => [
+                'unique:articles,' . $this->article['title'],
+            ],
+            'article.slug' => ['unique:articles,' . $this->article['slug'], ],
         ];
     }
 }

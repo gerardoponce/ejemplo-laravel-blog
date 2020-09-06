@@ -9,6 +9,8 @@
 
 {{-- Formulario modal --}}
 <x-create-model-form id="createForm" modalTitle="Crear categoría" textName="name" textareaName="description" textNamePH="Nombre" textareaNamePH="Descripción" modelName="categoría"/>
+{{-- Formulario modal --}}
+
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +26,9 @@
             <td>{{ $category->description }}</td>
             <td>  
                 <a class="btn btn-sm btn-outline-info text-dark" href=" {{ route('admin.categories.show', ['category' => $category->slug]) }}">Ver más</a>
+            </td>
+            <td>
+                <a href="{{ route('admin.categories.edit', ['category' => $category->slug]) }}">Editar</a>
             </td>
             <td>
                 {!! Form::open(['route' => ['admin.categories.destroy', 'category' => $category->slug,], 'method' => 'DELETE']) !!}

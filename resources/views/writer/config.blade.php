@@ -4,16 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 text-center">
-            <img class="rounded-circle img-thumbnail" src="{{ auth()->user()->image_path ? asset(auth()->user()->image_path) : '/storage/default.jpg' }}">
+            <img class="rounded-circle img-thumbnail" src="{{ Auth::user()->image_path ? asset(Auth::user()->image_path) : '/img/default_profile.jpg' }}">
         </div>
         <div class="col-md-6 offset-md-1">
         
-        <form action="{{ route('writer.profile.update') }}" enctype="multipart/form-data" method="POST">
-            @csrf
+        {!! Form::open(['route' => 'writer.profile.updateProfile', 'method' => 'PUT', 'files' => TRUE]) !!}
 
             <div class="form-group row">
                 <div class="col-md-12">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nombres" value="{{ auth()->user()->name }}" name="name" required autocomplete="name" autofocus>
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nombres" value="{{ Auth::user()->name }}" name="name" required autocomplete="name" autofocus>
 
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -25,7 +24,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Apellidos" name="last_name" value="{{ auth()->user()->last_name }}" required autocomplete="name" autofocus>
+                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Apellidos" name="last_name" value="{{ Auth::user()->last_name }}" required autocomplete="name" autofocus>
 
                     @error('last_name')
                         <span class="invalid-feedback" role="alert">
@@ -37,7 +36,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" placeholder="Nombre de usuario" name="username" value="{{ auth()->user()->username }}" required autocomplete="name" autofocus>
+                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" placeholder="Nombre de usuario" name="username" value="{{ Auth::user()->username }}" required autocomplete="name" autofocus>
 
                     @error('user_name')
                         <span class="invalid-feedback" role="alert">
@@ -49,7 +48,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Ingresar correo" name="email" value="{{ auth()->user()->email }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Ingresar correo" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -60,7 +59,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-12">
-                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Descripción sobre ti" name="description" rows="3">{{ auth()->user()->description }}</textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Descripción sobre ti" name="description" rows="3">{{ Auth::user()->description }}</textarea>
                         @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -81,8 +80,9 @@
                     @enderror
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Grabar</button>
-        </form>
+            {!! Form::submit('Grabar', ['class'=>'btn btn-primary btn-lg btn-block']) !!}
+
+        {!! Form::close() !!}
         </div>
     </div>
 </div>

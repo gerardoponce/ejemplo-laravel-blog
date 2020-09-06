@@ -16,15 +16,17 @@
                 {!! Form::open(['route' => 'admin.categories.store', 'method' => 'POST']) !!}
                 
                     <div class="modal-body">
-                    
-                    {!! Form::text($name=$textName, null, ['class' => 'form-control', 'placeholder' => $textNamePH]) !!}
-                    {!! Form::textarea($name=$textareaName, null, ['class' => 'form-control', 'placeholder' => $textareaNamePH]) !!}
-    
+                        {!! Form::text($textName, Null, ['class' => 'form-control', 'placeholder' => $textNamePH]) !!}
+                        @if ( $textareaName != Null && $textareaNamePH != Null )
+                        {!! Form::textarea($textareaName, Null, ['class' => 'form-control', 'placeholder' => $textareaNamePH]) !!}
+                        @endif
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cerrar</button>
-                        {!! Form::submit($text='Agregar ' . $modelName, ['class' => 'btn btn-sm btn-secondary']) !!}
+                        {!! Form::submit('Agregar ' . $modelName, ['class' => 'btn btn-sm btn-secondary']) !!}
                     </div>
+                    
                 {!! Form::close() !!}
             </div>
         </div>

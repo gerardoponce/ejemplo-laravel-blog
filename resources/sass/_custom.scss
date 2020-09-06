@@ -233,3 +233,8 @@ a{
         display:none;
     }
 }
+
+// Para ckeditor
+.ck-editor__editable {
+    min-height: 500px;
+}

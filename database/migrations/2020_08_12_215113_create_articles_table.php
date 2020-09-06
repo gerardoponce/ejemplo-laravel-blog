@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title', 100);
             $table->string('slug')->unique();
             $table->string('image_path');
-            $table->string('excerpt', 100);
+            $table->string('summary', 100);
             $table->text('text');
             $table->boolean('published')->default(0);
             $table->foreignId('user_id')->constrained();

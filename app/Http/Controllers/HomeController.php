@@ -19,32 +19,37 @@ class HomeController extends Controller
     {
         $categories = Category::select('name', 'slug')
             ->get();
-
-        $articles = Article::select('title', 'slug', 'image_path', 'excerpt', 'created_at')
+            
+        $articles = Article::select('title', 'slug', 'image_path as article_image_path', 'summary', 'created_at')
             ->where('published', '=', 1)
             ->latest()
             ->limit(8)
             ->get();
-        
+
         return view('home', compact('categories', 'articles'));
-        // return compact('categories', 'articles');
     }
 
     public function getProfile(User $user)
     {
+        $categories = Category::select('name', 'slug')
+            ->get();
+
         $articles = $user
-                        ->articles()
-                        ->select('title', 'slug', 'image_path', 'excerpt')
-                        // ->where('published', '=', 1)
-                        ->get();
+            ->articles()
+            ->select('title', 'slug', 'image_path as article_image_path', 'excerpt')
+            ->where('published', '=', 1)
+            ->get();
                         
         $articles = CollectionHelper::paginate($articles, 6);
 
-        return compact('user', 'articles');
+        return view( 'profile',compact('user', 'categories', 'articles') );
     }
 
     public function getArticle(User $user, Article $article)
     {
-        return compact('user', 'article');
+        $categories = Category::select('name', 'slug')
+            ->get();
+        
+        return view( 'article',compact('user', 'categories', 'article') );
     }
 }

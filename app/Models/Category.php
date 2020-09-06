@@ -14,7 +14,7 @@ class Category extends Model
     }
 
     protected $fillable = [
-        'name', 'slug', 'description',
+        'name', 'slug', 'image_path', 'description',
     ];
 
     // Relacion uno a muchos con Article

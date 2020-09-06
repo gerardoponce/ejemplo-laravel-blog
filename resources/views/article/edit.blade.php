@@ -2,12 +2,15 @@
 
 @section('content')
 
-{!! Form::open(['route' => 'writer.articles.store', 'method' => 'POST', 'files' => true]) !!}
-	{!! Form::select('category_id', $categories_for_article, NULL, ['placeholder' => 'Escoger categoría', 'class' => 'form-control']) !!}
-	{!! Form::text('title', null, ['class' => 'form-control border-0']) !!}
-	{!! Form::text('summary', null, ['class' => 'form-control border-0']) !!}
+{!! Form::open([ 'route' => ['writer.articles.update', $article->slug], 'method' => 'PUT', 'files' => true]) !!}
+    {!! Form::select('category_id', $categories_for_article, $article->category_id, ['class' => 'form-control']) !!}
+    <div>
+        <img src="{{ asset($article->image_path) }}" alt="">
+    </div>
+	{!! Form::text('title', $article->title, ['class' => 'form-control border-0']) !!}
+	{!! Form::text('summary', $article->summary, ['class' => 'form-control border-0']) !!}
 	{!! Form::file('image_path', []) !!}
-	{!! Form::textarea('text', null, ['id' => 'editor']) !!}
+	{!! Form::textarea('text', $article->text, ['id' => 'editor']) !!}
 	{!! Form::submit('Guardar artículo', ['class' => 'btn btn-sm']) !!}
 {!! Form::close() !!}
 @endsection
