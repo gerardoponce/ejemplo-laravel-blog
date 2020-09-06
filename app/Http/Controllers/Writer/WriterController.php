@@ -71,7 +71,7 @@ class WriterController extends Controller
             $image = $request->file('image_path');
 
             Image::make($image)
-                    ->resize(300, 300)->save($image);
+                    ->resize(300, 300);
 
             $image_path = 'storage/' . Storage::disk('public')->put('img/profiles', $image);
             
