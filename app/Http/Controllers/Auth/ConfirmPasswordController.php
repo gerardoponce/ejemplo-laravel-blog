@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
-use App\Traits\RedirectTo;
+use App\Helpers\RedirectHomeHelper as RedirectTo;
 
 class ConfirmPasswordController extends Controller
 {
@@ -27,7 +27,7 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    // Utiliza redirectTo() del trait RedirectTo
+    // Utiliza redirectTo() del helper RedirectTo
     // para redirigar de acuerdo a si es admin o writer
     use RedirectTo;
     protected function redirect()

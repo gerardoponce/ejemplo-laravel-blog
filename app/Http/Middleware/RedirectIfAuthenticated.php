@@ -18,16 +18,18 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && $request->user()->getRoleNames()->first() == 'writer')
-        {
-            return redirect(RouteServiceProvider::WRITER_HOME);
-        }
-        elseif (Auth::guard($guard)->check() && $request->user()->getRoleNames()->first() == 'admin')
-        {
-            return redirect(RouteServiceProvider::ADMIN_HOME);
-        }
-        else 
-        {
+        if (Auth::guard($guard)->check()) {
+
+            $role = $request->user()->getRoleNames()->first();
+
+            if ($role == 'writer') {
+                return redirect(RouteServiceProvider::WRITER_HOME);
+            }
+            elseif ($role == 'admin') {
+                return redirect(RouteServiceProvider::ADMIN_HOME);
+            }
+            
+        } else {
             return $next($request);
         }
     }
