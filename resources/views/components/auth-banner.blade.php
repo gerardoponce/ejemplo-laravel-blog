@@ -1,9 +1,8 @@
-<section class="container-xl">
-    <div class="alert alert-info alert-dismissible border-0 rounded-0 m-0 p-4" role="alert">
+<section class="container-xl mx-auto alert alert-info alert-dismissible border-0 rounded-0 m-0 p-4" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="cerrar banner">
             <span aria-hidden="true">&times;</span>
         </button>
-        <div class="row p-2">
+        <div class="row p-3">
             <div class="col-12 col-md-6 col-lg-8 align-self-center my-auto">
                 <h4 class="alert-heading">Importante</h4>
                 <p>
@@ -20,5 +19,4 @@
             <hr>
             <p class="mb-0">Gracias por usar Plot</p>
         </div>
-    </div>
 </section>
