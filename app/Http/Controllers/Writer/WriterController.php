@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Writer;
 
+use App\Helpers\CollectionPagerHelper as CollectionPager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Traits\ModelQueryTrait as ModelQueries;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -18,6 +20,7 @@ use Intervention\Image\Facades\Image;
 
 class WriterController extends Controller
 {
+    use ModelQueries;
     /**
      * Display a listing of the resource.
      *
@@ -25,16 +28,19 @@ class WriterController extends Controller
      */
     public function index()
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
+        // use ModelQueries;
+        $header_categories = $this->getCategoriesForHeader();
+
+        $home_articles = $this->getArticlesForHome();
             
-        $articles = Article::select('title', 'slug', 'image_path as article_image_path', 'summary', 'created_at')
+        $articles = Article::select('title', 'slug', 'articles.image_path as article_image_path', 'summary', 'articles.created_at', 'username')
+            ->join('users', 'articles.user_id', '=', 'users.id')
             ->where('published', '=', 1)
             ->latest()
             ->limit(8)
             ->get();
 
-        return view('home', compact('categories', 'articles'));
+        return view('home', compact('header_categories', 'home_articles', 'articles'));
     }
 
     /**

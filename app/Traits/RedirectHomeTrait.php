@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Traits;
 
 use App\Providers\RouteServiceProvider;
 use Auth;
 
 // Helper para la redireccion a un inicio determinado despues de iniciar sesion
-trait RedirectHomeHelper
+trait RedirectHomeTrait
 {
     // Te redirige al home segun el rol del usuario
     public function redirectTo () {

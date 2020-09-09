@@ -222,19 +222,27 @@ a{
     }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1216px) {
     .ocultar-lg {
         display:none;
     }
 }
 
-@media (min-width: 1200px)  {
+@media (min-width: 1216px)  {
     .ocultar-xl {
         display:none;
+    }
+
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1460px;
     }
 }
 
 // Para ckeditor
 .ck-editor__editable {
-    min-height: 500px;
+    min-height: 700px;
 }

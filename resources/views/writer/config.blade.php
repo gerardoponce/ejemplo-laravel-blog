@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container p-5">
     <div class="row">
         <div class="col-md-5 text-center">
             <img class="rounded-circle img-thumbnail" src="{{ Auth::user()->image_path ? asset(Auth::user()->image_path) : '/img/default_profile.jpg' }}">

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Writer;
 
+use App\Helpers\CollectionPagerHelper as CollectionPager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Traits\ModelQueryTrait as ModelQueries;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -15,6 +17,7 @@ use Intervention\Image\Facades\Image;
 
 class ArticleController extends Controller
 {
+    use ModelQueries;
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +25,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::select('title', 'slug', 'image_path','summary')
+        $header_categories = $this->getCategoriesForHeader();
+
+        $articles = Article::select('title', 'slug', 'image_path','summary', 'published')
             ->where('user_id', '=', Auth::user()->id)
+            ->latest()
             ->paginate(6);
 
-        return view('article.index', compact('articles'));
+        return view('writer.articles.index', compact('header_categories', 'articles'));
     }
 
     /**
@@ -36,9 +42,11 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $header_categories = $this->getCategoriesForHeader();
+
         $categories_for_article = Category::pluck('name', 'id');
         
-        return view('article.create', compact('categories_for_article'));
+        return view('writer.articles.create', compact('header_categories', 'categories_for_article'));
     }
 
     /**
@@ -56,15 +64,15 @@ class ArticleController extends Controller
             $image = $request->file('image_path');
 
             Image::make($image)
-                    ->resize(300, 300)->save($image);
+                    ->resize(300, 300);
 
-            $image_path = 'storage/' . Storage::disk('public')->put('img/articles', $image);
+            $image_path = asset( 'storage/' . Storage::disk('public')->put('img/articles', $image) );
             
         }
         else {
-            $image = 'img/black_background.jpg';
+            $image = "img/black_background.jpg";
             
-            $image_path = 'storage/' . Storage::disk('public')->put('img/articles', $image);
+            $image_path = asset($image);
         }
 
         $article = new Article(
@@ -74,6 +82,7 @@ class ArticleController extends Controller
                 'image_path'    => $image_path,
                 'summary'       => $request->get('summary'),
                 'text'          => $request->get('text'),
+                'published'     => $request->get('published'),
                 'user_id'       => Auth::user()->id,
                 'category_id'   => $request->get('category_id')
             ]);
@@ -109,9 +118,11 @@ class ArticleController extends Controller
     {
         $this->authorize('pass', $article);
 
+        $header_categories = $this->getCategoriesForHeader();
+
         $categories_for_article = Category::pluck('name', 'id');
         
-        return view('article.edit',compact('article', 'categories_for_article'));
+        return view('writer.articles.edit',compact('header_categories', 'article', 'categories_for_article'));
     }
 
     /**
@@ -129,9 +140,9 @@ class ArticleController extends Controller
             $image = $request->file('image_path');
 
             Image::make($image)
-                    ->resize(300, 300)->save($image);
+                    ->resize(300, 300);
 
-            $image_path = 'storage/' . Storage::disk('public')->put('img/articles', $image);
+            $image_path = asset( 'storage/' . Storage::disk('public')->put('img/articles', $image) );
             
             $article->image_path = $image_path;
         }
@@ -141,6 +152,7 @@ class ArticleController extends Controller
         $article->slug          = $request->get('slug');
         $article->summary       = $request->get('summary');
         $article->text          = $request->get('text');
+        $article->published     = $request->get('published');
         $article->user_id       = Auth::user()->id;
         $article->category_id   = intval($request->get('category_id'));
     

@@ -4,30 +4,28 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
-// Clase para la generacion de traits
-// en donde poder poner funciones que se deben usar en varios controladores
-class TraitMakeCommand extends GeneratorCommand
+class HelperMakeCommand extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'make:trait';
+    protected $name = 'make:helper';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new trait';
+    protected $description = 'Create a new helper';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Trait';
+    protected $type = 'Class';
 
     /**
      * Get the stub file for the generator.
@@ -36,7 +34,7 @@ class TraitMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/trait.stub';
+        return __DIR__ . '/stubs/helper.stub';
     }
 
     /**
@@ -48,6 +46,6 @@ class TraitMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Traits';
+        return $rootNamespace . '\Helpers';
     }
 }

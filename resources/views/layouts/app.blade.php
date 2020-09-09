@@ -13,10 +13,6 @@
     
     {{-- Styles --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    {{-- CDN para los iconos de FontAwesome --}}
-    <script src="https://kit.fontawesome.com/de17adf649.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -42,6 +38,8 @@
 
     {{-- Scripts para todas las paginas  --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- CDN para los iconos de FontAwesome --}}
+    <script src="https://kit.fontawesome.com/de17adf649.js" crossorigin="anonymous"></script>
 
     {{-- Scripts para usar en algunas paginas --}}
     @yield('scripts')

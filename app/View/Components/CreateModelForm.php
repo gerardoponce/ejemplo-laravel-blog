@@ -14,6 +14,7 @@ class CreateModelForm extends Component
     public $textNamePH;
     public $textareaNamePH;
     public $modelName;
+    public $route;
 
     /**
      * Create a new component instance.
@@ -22,16 +23,17 @@ class CreateModelForm extends Component
      */
     public function __construct
     (
-        $id, $modalTitle, $textName, $textareaName, $textNamePH, $textareaNamePH, $modelName
+        $id, $modalTitle, $textName, $textareaName, $textNamePH, $textareaNamePH, $modelName, $route
     )
     {
-        $this->id = $id;
-        $this->modalTitle = $modalTitle;
-        $this->textName = $textName;
-        $this->textareaName = $textareaName;
-        $this->textNamePH = $textNamePH;
-        $this->textareaNamePH = $textareaNamePH;
-        $this->modelName = $modelName;
+        $this->id               = $id;
+        $this->modalTitle       = $modalTitle;
+        $this->textName         = $textName;
+        $this->textareaName     = $textareaName;
+        $this->textNamePH       = $textNamePH;
+        $this->textareaNamePH   = $textareaNamePH;
+        $this->modelName        = $modelName;
+        $this->route            = $route;
     }
 
     /**

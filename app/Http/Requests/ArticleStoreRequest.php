@@ -32,7 +32,9 @@ class ArticleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'         => [ 'required' ],
+            'slug'          => [ 'required', 'unique:articles' ],
+            'summary'       => [ 'required' ],
         ];
     }
 }
