@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,10 @@ class AdminController extends Controller
         $categories = Category::select('name', 'slug')
             ->get();
 
-        return view('admin.home', compact('categories'));
+        $users = User::count();
+        $tags = Tag::count();
+
+        return view('admin.home', compact('categories', 'users', 'tags'));
     }
 
     /**

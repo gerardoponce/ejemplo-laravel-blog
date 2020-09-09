@@ -238,3 +238,19 @@ a{
 .ck-editor__editable {
     min-height: 500px;
 }
+
+// CHARTS CATEGORYCHART - TAGCHART
+.charts {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.registerChart {
+    min-width: 100%;
+}
+
+.categoryChart, .tagChart{
+    min-width: 50%;
+}
