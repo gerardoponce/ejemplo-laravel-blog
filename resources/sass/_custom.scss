@@ -102,10 +102,10 @@ a{
     }
     .galery {
         width: 100%;
-        overflow: hidden;
         margin: 0;
         height: 416px;
         a{
+            display: block;
             .photo {
                 position: relative;
                 height: 100%;

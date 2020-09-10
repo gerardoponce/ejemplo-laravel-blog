@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('tab-title', 'Portada')
 @section('content')
-<div class="container-xl px-0">
     <section class="banner">
         <div class="container-md">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -12,19 +11,19 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             First slide label
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             Second slide label
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             Third slide label
                         </div>
@@ -77,13 +76,13 @@
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
             </a>
-            <a href="" class="ocultar ocultar-sm">
+            <a href="">
             <div class="photo">
                 <img src="{{ asset('img/image3.jpg') }}" alt="">
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
             </a>
-            <a href="" class="ocultar ocultar-sm">
+            <a href="">
             <div class="photo">
                 <img src="{{ asset('img/image1.jpg') }}" alt="">
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
@@ -98,5 +97,4 @@
             </div>
         </div>
     </section>
-</div>
 @endsection

@@ -1,4 +1,4 @@
-<section class="container-xl mx-auto alert alert-info alert-dismissible border-0 rounded-0 m-0 p-4" role="alert">
+<section class="mx-auto alert alert-info alert-dismissible border-0 rounded-0 m-0 p-4" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="cerrar banner">
             <span aria-hidden="true">&times;</span>
         </button>
