@@ -6,89 +6,23 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Http\Controllers\Controller;
+use App\Traits\ModelQueryTrait as ModelQueries;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    use ModelQueries;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function getHome()
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
-
+        $header_categories = $this->getCategoriesForHeader();
         $users = User::count();
         $tags = Tag::count();
 
-        return view('admin.home', compact('categories', 'users', 'tags'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('admin.home', compact('header_categories', 'users', 'tags'));
     }
 }

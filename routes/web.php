@@ -22,7 +22,7 @@ Route::get('/@{user}/{article}', 'HomeController@getArticle')->name('article');
 Route::middleware( ['guest'] )->group( function() {
 
     // Ruta de index de invitados y writers
-    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/', 'HomeController@getHome')->name('home');
 
 });
 
@@ -36,38 +36,32 @@ Route::get('/pruebas', function () {
 Route::middleware( ['auth'] )->group( function() {
 
     // Rutas para los admins
-    Route::namespace( 'Admin' )->prefix( '/admin' )->group( function() {
+    Route::namespace( 'Admin' )->prefix( '/admin' )
+        ->middleware('role:admin')
+        ->group( function() {
 
-        Route::get('/', 'AdminController@getIndex')
-            ->middleware('permission:admin.home')
-            ->name('admin.index');
+        Route::get('/', 'AdminController@getHome')
+            ->name('admin.home');
    
         Route::get('/categories', 'CategoryController@index')
-            ->middleware('permission:admin.categories.index')
             ->name('admin.categories.index');
         
         Route::get('/categories/create', 'CategoryController@create')
-            ->middleware('permission:admin.categories.create')
             ->name('admin.categories.create');
         
         Route::post('/categories/store', 'CategoryController@store')
-            ->middleware('permission:admin.categories.create')
             ->name('admin.categories.store');
         
         Route::get('/categories/{category}', 'CategoryController@show')
-            ->middleware('permission:admin.categories.show')
             ->name('admin.categories.show');
         
         Route::get('/categories/{category}/edit', 'CategoryController@edit')
-            ->middleware('permission:admin.categories.edit')
             ->name('admin.categories.edit');
         
         Route::put('/categories/{category}', 'CategoryController@update')
-            ->middleware('permission:admin.categories.edit')
             ->name('admin.categories.update');
         
         Route::delete('/categories/{category}', 'CategoryController@destroy')
-            ->middleware('permission:admin.categories.destroy')
             ->name('admin.categories.destroy');
 
     });

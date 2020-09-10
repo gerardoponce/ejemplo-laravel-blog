@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('tab-title', 'Administrador')
+@section('header-title', '- Admin')
 @section('content')
 
     <section class="banner">
@@ -9,7 +11,7 @@
                     <p class="text-center">Total de usuarios<br>{{ $users }}</p>
                 </div>
                 <div class="col-sm">
-                    <p class="text-center">Nro. Categorias<br>{{ count($categories) }}</p>
+                    <p class="text-center">Nro. Categorias<br>{{ count($header_categories) }}</p>
                 </div>
                 <div class="col-sm">
                     <p class="text-center">Nro. Tags<br>{{ $tags }}</p>

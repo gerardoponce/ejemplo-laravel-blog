@@ -38,10 +38,16 @@ class CategoryStoreRequest extends FormRequest
     public function rules()
     {
         // consultar sobre el minimo y maximo de caracteres
-        return [
-            'name'          => ['required', 'unique:categories', 'min:5', 'max:50' ],
-            'slug'          => ['required', 'unique:categories' ],
-            'description'   => ['required', 'min:5', 'max:200'],
+        $rules = [
+            'name'          => 'required|unique:categories|min:5|max:50',
+            'slug'          => 'required|unique:categories',
+            'description'   => 'required|min:5|max:200',
         ];
+
+        if ($this->get('image_path')) {
+            $rules = array_merge($rules, ['image_path' => 'mimes:jpg,jpeg,png']);
+        }
+        
+        return $rules;
     }
 }

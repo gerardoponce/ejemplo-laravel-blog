@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('tab-title', 'Portada')
 @section('content')
+<div class="container-xl px-0">
     <section class="banner">
-        <div class="container">
+        <div class="container-md">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="circle active"></li>
@@ -11,19 +12,19 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/image1.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             First slide label
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/image2.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             Second slide label
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/image3.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('img/black_background.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             Third slide label
                         </div>
@@ -39,17 +40,20 @@
             </div>
             <div class="articles">
                 <div class="row">
-                    @foreach ($articles as $article)
+                    @foreach ($home_articles as $article)
                     <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                         <div class="card mb-3">
-                            <img src="{{ $article->image_path}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">{{ $article->title }}</h5>
-                              <p class="card-text">{{ $article->summary}}</p>
-                              <p class="card-text"><small class="text-muted"> {{$article->created_at}}</small></p>
-                            </div>
-                          </div>
-                    </div>    
+                            <a href="{{ route('article', [ 'user' => $article->username, 'article' => $article->slug ]) }}" class="text-decoration-none">
+                                <img src="{{ $article->article_image_path }}" class="card-img-top" alt="imagen">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="text-primary h6">{{ '@'.$article->username }}</h5>
+                                    <h5 class="card-title">{{ $article->title }}</h5>
+                                    <p class="card-text">{{ $article->summary}}</p>
+                                    <p class="card-text"><small class="text-muted"> {{$article->created_at}}</small></p>
+                                </div>
+                              </div>    
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -73,13 +77,13 @@
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
             </a>
-            <a href="">
+            <a href="" class="ocultar ocultar-sm">
             <div class="photo">
                 <img src="{{ asset('img/image3.jpg') }}" alt="">
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
             </div>
             </a>
-            <a href="">
+            <a href="" class="ocultar ocultar-sm">
             <div class="photo">
                 <img src="{{ asset('img/image1.jpg') }}" alt="">
                 <div class="title"><h5>Tiulo de la categoria 1</h5></div>
@@ -94,4 +98,5 @@
             </div>
         </div>
     </section>
+</div>
 @endsection

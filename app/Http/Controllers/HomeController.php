@@ -2,54 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\CollectionHelper;
+use App\Helpers\CollectionPagerHelper as CollectionPager;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
+use App\Traits\ModelQueryTrait as ModelQueries;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    use ModelQueries;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getHome()
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
-            
-        $articles = Article::select('title', 'slug', 'image_path as article_image_path', 'summary', 'created_at')
-            ->where('published', '=', 1)
+        // use ModelQueries;
+        $header_categories = $this->getCategoriesForHeader();
+
+        $home_articles = $this->getArticlesForHome();
+        
+        $popular_articles = Article::select('title', 'slug', 'image_path as popular_article_image_path')
             ->latest()
-            ->limit(8)
+            ->limit(3)
             ->get();
 
-        return view('home', compact('categories', 'articles'));
+        return view('home', compact('header_categories', 'home_articles', 'popular_articles'));
     }
 
+    
     public function getProfile(User $user)
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
+        // use ModelQueries;
+        $header_categories = $this->getCategoriesForHeader();
 
         $articles = $user
             ->articles()
-            ->select('title', 'slug', 'image_path as article_image_path', 'excerpt')
+            ->select('title', 'slug', 'image_path as article_image_path', 'summary')
             ->where('published', '=', 1)
             ->get();
                         
-        $articles = CollectionHelper::paginate($articles, 6);
+        $articles = CollectionPager::paginate($articles, 6);
 
-        return view( 'profile',compact('user', 'categories', 'articles') );
+        return view( 'profile',compact('user', 'header_categories', 'articles') );
     }
 
     public function getArticle(User $user, Article $article)
     {
-        $categories = Category::select('name', 'slug')
-            ->get();
+        // use ModelQueries;
+        $header_categories = $this->getCategoriesForHeader();
         
-        return view( 'article',compact('user', 'categories', 'article') );
+        return view( 'article',compact('user', 'header_categories', 'article') );
     }
 }

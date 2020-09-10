@@ -13,12 +13,12 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                {!! Form::open(['route' => 'admin.categories.store', 'method' => 'POST']) !!}
+                {!! Form::open(['route' => $route, 'method' => 'POST']) !!}
                 
                     <div class="modal-body">
-                        {!! Form::text($textName, Null, ['class' => 'form-control', 'placeholder' => $textNamePH]) !!}
+                        {!! Form::text($textName, Null, ['class' => 'form-control my-2', 'placeholder' => $textNamePH]) !!}
                         @if ( $textareaName != Null && $textareaNamePH != Null )
-                        {!! Form::textarea($textareaName, Null, ['class' => 'form-control', 'placeholder' => $textareaNamePH]) !!}
+                        {!! Form::textarea($textareaName, Null, ['class' => 'form-control my-2', 'placeholder' => $textareaNamePH]) !!}
                         @endif
                     </div>
 

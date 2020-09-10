@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
-class CollectionHelper
+class CollectionPagerHelper
 {
     public static function paginate(Collection $results, $pageSize)
     {

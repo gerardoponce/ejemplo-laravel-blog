@@ -37,10 +37,9 @@ class ArticleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'article.title' => [
-                'unique:articles,' . $this->article['title'],
-            ],
-            'article.slug' => ['unique:articles,' . $this->article['slug'], ],
+            'title'         => [ 'required' ],
+            'article.slug'  => ['unique:articles,' . $this->article['slug'], ],
+            'summary'       => [ 'required' ],
         ];
     }
 }

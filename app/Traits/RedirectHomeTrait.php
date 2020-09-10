@@ -3,20 +3,23 @@
 namespace App\Traits;
 
 use App\Providers\RouteServiceProvider;
+use Auth;
 
-// Trait de donde llamar funciones que son reutilizables en varios controladores
-trait RedirectTo
+// Helper para la redireccion a un inicio determinado despues de iniciar sesion
+trait RedirectHomeTrait
 {
-    // Te redirige al home de segun el rol del usuario
+    // Te redirige al home segun el rol del usuario
     public function redirectTo () {
 
-        if (auth()->user()->getRoleNames()->first() == 'admin') {
+        $role = Auth::user()->getRoleNames()->first();
+
+        if ($role == 'admin') {
             
             return $redirectTo = RouteServiceProvider::ADMIN_HOME;
         
         }
 
-        elseif (auth()->user()->getRoleNames()->first() == 'writer') {
+        elseif ($role == 'writer') {
 
             return $redirectTo = RouteServiceProvider::WRITER_HOME;
         
