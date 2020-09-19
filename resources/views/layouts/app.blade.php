@@ -41,12 +41,6 @@
     {{-- CDN para los iconos de FontAwesome --}}
     <script src="https://kit.fontawesome.com/de17adf649.js" crossorigin="anonymous"></script>
 
-    <!-- Charting library -->
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-    
     {{-- Scripts para usar en algunas paginas --}}
     @yield('scripts')
 

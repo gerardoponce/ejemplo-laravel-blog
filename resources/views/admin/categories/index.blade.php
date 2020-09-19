@@ -23,7 +23,7 @@
     <section class="d-flex justify-content-end">
         <div class="p-4">
             {{-- Formulario modal --}}
-        <x-create-model-form id="createForm" modalTitle="Crear categoría" textName="name" textareaName="description" textNamePH="Nombre" textareaNamePH="Descripción" modelName="categoría" route="admin.categories.store"/>
+        <x-create-model-form buttonName="Crear Categoria" id="createForm" method="POST" className="btn btn-primary" modalTitle="Crear categoría" textName="name" textareaName="description" textNamePH="Nombre" textareaNamePH="Descripción" modelName="categoría" route="admin.categories.store"/>
         {{-- Formulario modal --}}
         </div>
     </section>
@@ -42,11 +42,12 @@
                 <tr>
                     <th scope="row">{{ $category->name }}</th>
                     <td>{{ $category->description }}</td>
-                    <td>  
+                    <td> 
                         <a class="btn btn-sm btn-outline-info text-dark" href=" {{ route('admin.categories.show', ['category' => $category->slug]) }}">Ver más</a>
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('admin.categories.edit', ['category' => $category->slug]) }}">Editar</a>
+                        <x-create-model-form image_path="{{ $category->image_path }}" buttonName="Editar" valueName="{{ $category->name }}" descriptionValue="{{ $category->description }}" className="btn btn-sm btn-outline-secondary" id="{{ $category->slug }}" method="PUT" modalTitle="Editar categoría" textName="name" textareaName="description" textNamePH="Nombre" textareaNamePH="Descripción" modelName="categoría" route="admin.categories.update"/>
+                        {{-- <a class="btn btn-sm btn-outline-secondary" href="{{ route('admin.categories.edit', ['category' => $category->slug]) }}">Editar</a> --}}
                     </td>
                     <td>
                         {!! Form::open(['route' => ['admin.categories.destroy', 'category' => $category->slug,], 'method' => 'DELETE']) !!}

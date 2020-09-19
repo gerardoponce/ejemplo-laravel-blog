@@ -30,6 +30,12 @@
 
 @section('scripts')
 
+    <!-- Charting library -->
+    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+
+    <!-- Chartisan -->
+    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+
     @include('admin.charts.registerChart')
     @include('admin.charts.categoryChart')
     @include('admin.charts.tagChart')

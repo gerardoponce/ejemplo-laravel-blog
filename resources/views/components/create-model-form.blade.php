@@ -1,6 +1,6 @@
 <section>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ $id }}">
-        Crear categoría
+    <button type="button" class="{{ $className }}" data-toggle="modal" data-target="#{{ $id }}">
+        {{ $buttonName }}
     </button>
     
     {{-- Modal --}}
@@ -13,18 +13,18 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                {!! Form::open(['route' => $route, 'method' => 'POST']) !!}
+                {!! Form::open(['route' => [$route, $id], 'method' => $method]) !!}
                 
                     <div class="modal-body">
-                        {!! Form::text($textName, Null, ['class' => 'form-control my-2', 'placeholder' => $textNamePH]) !!}
+                        {!! Form::text($textName, $valueName, ['class' => 'form-control my-2', 'placeholder' => $textNamePH]) !!}
                         @if ( $textareaName != Null && $textareaNamePH != Null )
-                        {!! Form::textarea($textareaName, Null, ['class' => 'form-control my-2', 'placeholder' => $textareaNamePH]) !!}
+                        {!! Form::textarea($textareaName, $descriptionValue, ['class' => 'form-control my-2', 'placeholder' => $textareaNamePH]) !!}
                         @endif
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cerrar</button>
-                        {!! Form::submit('Agregar ' . $modelName, ['class' => 'btn btn-sm btn-secondary']) !!}
+                        {!! Form::submit($buttonName, ['class' => 'btn btn-sm btn-secondary']) !!}
                     </div>
                     
                 {!! Form::close() !!}

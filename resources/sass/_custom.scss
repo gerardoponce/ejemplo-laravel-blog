@@ -102,18 +102,22 @@ a{
     }
     .galery {
         width: 100%;
-        margin: 0;
-        height: 416px;
-        a{
-            .photo {
-                position: relative;
+        display: inline-block;
+        .photo {
+            position: relative;
+            width: 25%;
+            float: left;
+            @media screen and (max-width:950px) {
+                width: 50%;
+            }
+            a {
                 height: 100%;
-                width: 25%;
-                float: left;
+                width: 100%;
+                display: block;
+                
                 img {
                     vertical-align: top;
-                    // width: 100%;
-                    height: 100%;
+                    width: 100%;
                 }
                 &:after {
                     content: "";
@@ -152,14 +156,16 @@ a{
                     &:after {
                         background: #000;
                         opacity: .65;
-
+    
                     }
                     > .title {
-                       bottom: 45%; 
+                        bottom: 45%; 
                     }
                 }
             }
+            
         }
+        
     }
 }
 
@@ -260,4 +266,26 @@ a{
 
 .categoryChart, .tagChart{
     min-width: 50%;
+}
+
+.loginForm .image-content, .loginForm .form {
+    width: 50%;
+    float: left;
+}
+
+.loginForm {
+    .image-content {
+        height: 100vh;
+        display: block;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .form {
+        .card{
+            margin: 10% 20px;
+        }
+    }
 }

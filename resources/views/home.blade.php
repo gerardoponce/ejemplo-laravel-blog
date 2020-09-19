@@ -64,30 +64,30 @@
             </div>
         </div>
         <div class="galery">
-            <a href="">
             <div class="photo">
-                <img src="{{ asset('img/image1.jpg') }}" alt="">
-                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
+                <a href="">
+                    <img src="{{ asset('img/prueba.jpg') }}" alt="">
+                    <div class="title"><h5>Titulo de la categoria 1</h5></div>
+                </a>
             </div>
-            </a>
-            <a href="">
             <div class="photo">
-                <img src="{{ asset('img/image2.jpg') }}" alt="">
-                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
+                <a href="">
+                    <img src="{{ asset('img/prueba.jpg') }}" alt="">
+                    <div class="title"><h5>Titulo de la categoria 1</h5></div>
+                </a>
             </div>
-            </a>
-            <a href="">
             <div class="photo">
-                <img src="{{ asset('img/image3.jpg') }}" alt="">
-                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
+                <a href="">
+                    <img src="{{ asset('img/prueba.jpg') }}" alt="">
+                    <div class="title"><h5>Titulo de la categoria 1</h5></div>
+                </a>
             </div>
-            </a>
-            <a href="">
             <div class="photo">
-                <img src="{{ asset('img/image1.jpg') }}" alt="">
-                <div class="title"><h5>Tiulo de la categoria 1</h5></div>
+                <a href="">
+                    <img src="{{ asset('img/prueba.jpg') }}" alt="">
+                    <div class="title"><h5>Titulo de la categoria 1</h5></div>
+                </a>
             </div>
-            </a>
         </div>
     </section>
     <section class="sentence">
